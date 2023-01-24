@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide empty member
+
+interface Button {
+    render(): void
+    onClick(): void
+}
+
+class HtmlButton implements Button {
+}
+
+class WindowsButton implements Button {
+    jpanel: jPanel
+    jframe: jFrame
+    jbutton: jButton
+}
+
+abstract Dialog {
+    renderWindow(): void
+    {abstract} createButton(): Button
+}
+Dialog ..> Button
+
+class HtmlDialog extends Dialog {
+    createButton(): Button
+}
+
+class WindowsDialog extends Dialog {
+    createButton(): Button
+}
+
+@enduml
