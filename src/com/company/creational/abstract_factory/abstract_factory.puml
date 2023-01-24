@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide empty member
+
+package button {
+    interface Button {
+        paint(): void
+    }
+
+    class MacOsButton implements Button {
+    }
+
+    class WindowsButton implements Button{
+    }
+}
+
+package checkbox {
+    interface Checkbox {
+        paint(): void
+    }
+
+    class MacOsCheckbox implements Checkbox {
+    }
+
+    class WindowsCheckbox implements Checkbox {
+    }
+}
+
+package factory {
+    interface GUIFactory {
+        createButton(): Button
+        createCheckbox(): Checkbox
+    }
+
+    class MacOsGUIFactory implements GUIFactory {
+    }
+
+    class WindowsGUIFactory implements GUIFactory {
+    }
+}
+
+class Application {
+    button: Button
+    checkbox: Checkbox
+
+    Application(GUIFactory)
+}
+Application ..> Button
+Application ..> Checkbox
+
+@enduml
