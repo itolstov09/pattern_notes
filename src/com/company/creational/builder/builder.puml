@@ -1,0 +1,90 @@
+@startuml
+hide empty member
+left to right direction
+
+namespace builder {
+    interface CarBuilder {
+        void setCarType(CarType type);
+        void setSeats(int seats);
+        void setEngine(Engine engine);
+        void setTransmission(Transmission transmission);
+        void setTripComputer(TripComputer tripComputer);
+        void setGPSNavigator(GPSNavigator gpsNavigator);
+    }
+
+    class CarBuilderImpl implements CarBuilder {
+        CarType type;
+        int seats;
+        Engine engine;
+        Transmission transmission;
+        TripComputer tripComputer;
+        GPSNavigator gpsNavigator;
+    }
+
+    class CarManualBuilder implements CarBuilder {
+        CarType type;
+        int seats;
+        Engine engine;
+        Transmission transmission;
+        TripComputer tripComputer;
+        GPSNavigator gpsNavigator;
+    }
+}
+
+namespace car {
+    class Car {
+        CarType carType;
+        int seats;
+        Engine engine;
+        Transmission transmission;
+        TripComputer tripComputer;
+        GPSNavigator gpsNavigator;
+        double fuel = 0;
+    }
+
+    enum CarType {
+        CITY_CAR
+        SPORTS_CAR
+        SUV
+    }
+
+    class Manual {
+        CarType carType;
+        int seats;
+        Engine engine;
+        Transmission transmission;
+        TripComputer tripComputer;
+        GPSNavigator gpsNavigator;
+    }
+}
+
+namespace components {
+    class Engine {
+        double volume
+        double mileage
+        boolean started
+    }
+
+    class GPSNavigator {
+        String route
+    }
+
+    class TripComputer {
+        Car car
+    }
+
+    enum Transmission {
+        SINGLE_SPEED
+        MANUAL
+        AUTOMATIC
+        SEMI_AUTOMATIC
+    }
+}
+
+class Director {
+    void constructSportsCar(CarBuilder builder)
+    void constructCityCar(CarBuilder builder)
+    void constructSUV(CarBuilder builder)
+}
+
+@enduml
