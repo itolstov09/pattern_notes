@@ -1,0 +1,41 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide empty members
+
+class AirController {
+    + getAirTemperature(): int
+}
+
+class FuelPump {
+    + on(): void
+    + off(): void
+    + setFuelPressure(airTemperature: int)
+}
+
+class CoolingController {
+    + setTempUpperLimit(temperature: int): void
+    + run(): void
+    + runUntilCooled() void
+}
+
+class Starter {
+    + start(): void
+}
+
+class CarEngineFacade {
+    - airController: AirController
+    - fuelPump: FuelPump
+    - coolingController: CoolingController
+    - starter: Starter
+
+    + CarEngineFacade(airController: AirController, fuelPump: FuelPump, coolingController: CoolingController, starter: Starter)
+    + startEngine(): void
+    + stopEngine(): void
+}
+Starter <.. CarEngineFacade
+AirController <.. CarEngineFacade
+CoolingController <.. CarEngineFacade
+FuelPump <.. CarEngineFacade
+
+
+@enduml
