@@ -1,6 +1,6 @@
-package com.company.creational.builder.components;
+package com.company.creational.builder.refactoring_guru.components;
 
-import com.company.creational.builder.car.Car;
+import com.company.creational.builder.refactoring_guru.car.Car;
 
 public class TripComputer {
     private Car car;

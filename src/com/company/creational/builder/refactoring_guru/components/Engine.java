@@ -1,4 +1,4 @@
-package com.company.creational.builder.components;
+package com.company.creational.builder.refactoring_guru.components;
 
 public class Engine {
     private final double volume;

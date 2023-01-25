@@ -1,9 +1,9 @@
-package com.company.creational.builder;
+package com.company.creational.builder.refactoring_guru;
 
-import com.company.creational.builder.builder.CarBuilderImpl;
-import com.company.creational.builder.builder.CarManualBuilder;
-import com.company.creational.builder.car.Car;
-import com.company.creational.builder.car.Manual;
+import com.company.creational.builder.refactoring_guru.builder.CarBuilderImpl;
+import com.company.creational.builder.refactoring_guru.builder.CarManualBuilder;
+import com.company.creational.builder.refactoring_guru.car.Car;
+import com.company.creational.builder.refactoring_guru.car.Manual;
 
 public class Demo {
     public static void main(String[] args) {

@@ -1,11 +1,11 @@
-package com.company.creational.builder.builder;
+package com.company.creational.builder.refactoring_guru.builder;
 
-import com.company.creational.builder.car.Car;
-import com.company.creational.builder.car.CarType;
-import com.company.creational.builder.components.Engine;
-import com.company.creational.builder.components.GPSNavigator;
-import com.company.creational.builder.components.Transmission;
-import com.company.creational.builder.components.TripComputer;
+import com.company.creational.builder.refactoring_guru.car.Car;
+import com.company.creational.builder.refactoring_guru.car.CarType;
+import com.company.creational.builder.refactoring_guru.components.Engine;
+import com.company.creational.builder.refactoring_guru.components.GPSNavigator;
+import com.company.creational.builder.refactoring_guru.components.Transmission;
+import com.company.creational.builder.refactoring_guru.components.TripComputer;
 
 public class CarBuilderImpl implements CarBuilder {
     private CarType type;
