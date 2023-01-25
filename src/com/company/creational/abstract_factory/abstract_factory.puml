@@ -1,6 +1,9 @@
 @startuml
 'https://plantuml.com/class-diagram
+left to right direction
+
 hide empty member
+
 
 package button {
     interface Button {
