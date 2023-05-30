@@ -1,0 +1,53 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide empty member
+left to right direction
+
+class Person {
+    - name: String
+    - paymentType: Enum
+}
+
+enum PaymentType {
+    PAYPAL
+    CREDIT_CARD
+}
+
+Person - PaymentType
+
+interface PaymentStrategy {
+    + processPayment(amount: BigDecimal, person: Person): boolean
+}
+
+class PaymentStrategyPayPal implements PaymentStrategy {
+    + processPayment(amount: BigDecimal, person: Person): boolean
+}
+
+class PaymentStrategyCreditCard implements PaymentStrategy {
+    + processPayment(amount: BigDecimal, person: Person): boolean
+}
+
+
+class PaymentProcessor {
+    - paymentStrategy: PaymentStrategy
+    - paymentStrategyFactory: PaymentStrategyFactory
+
+    + PaymentProcessor(paymentStrategyFactory: PaymentStrategyFactory)
+
+    + getPaymentStrategy(paymentType: PaymentType): PaymentStrategy
+    + setPaymentStrategy(paymentStrategy: PaymentStrategy): void
+    + processPayment(amount: BigDecimal, person: Person): boolean
+}
+
+PaymentStrategy "1" --o "1..*" PaymentProcessor
+
+class PaymentStrategyFactory {
+    - strategyMap: Map<PaymentType, PaymentStrategy>
+
+    + getByPaymentType(paymentType: PaymentType): PaymentStrategy
+}
+
+PaymentProcessor .> PaymentStrategyFactory
+
+
+@enduml
