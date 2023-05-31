@@ -39,7 +39,7 @@ class PaymentProcessor {
     + processPayment(amount: BigDecimal, person: Person): boolean
 }
 
-PaymentStrategy "1" --o "1..*" PaymentProcessor
+PaymentStrategy "1" --* "1..*" PaymentProcessor
 
 class PaymentStrategyFactory {
     - strategyMap: Map<PaymentType, PaymentStrategy>
