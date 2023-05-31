@@ -1,0 +1,59 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide empty member
+
+interface DispenseChain {
+    + setText(DispenseChain chain): void
+    + dispense(Currency currency): void
+}
+
+class Dollar5Dispenser implements DispenseChain {
+    - DispenseChain chain
+
+    + setText(DispenseChain chain): void
+    + dispense(Currency currency): void
+}
+
+class Dollar10Dispenser implements DispenseChain {
+    - DispenseChain chain
+
+    + setText(DispenseChain chain): void
+    + dispense(Currency currency): void
+}
+
+class Dollar20Dispenser implements DispenseChain {
+    - DispenseChain chain
+
+    + setText(DispenseChain chain): void
+    + dispense(Currency currency): void
+}
+
+class Dollar50Dispenser implements DispenseChain {
+    - DispenseChain chain
+
+    + setText(DispenseChain chain): void
+    + dispense(Currency currency): void
+}
+
+DispenseChain <--o Dollar5Dispenser
+DispenseChain <--o Dollar10Dispenser
+DispenseChain <--o Dollar20Dispenser
+DispenseChain <--o Dollar50Dispenser
+
+
+
+class Currency {
+    - int amount
+}
+
+class ATM {
+    - startOfChain: DispenseChain
+    - minimalBillValue: int
+
+    - {static} link(DispenseChain head, List<DispenseChain> tail): DispenseChain
+    + dispense(Currency currency): void
+}
+
+ATM o--> DispenseChain
+
+@enduml
