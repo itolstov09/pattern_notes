@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide empty members
+
+interface EventListener {
+    + update(eventType: String, file: File): void
+}
+
+class EmailNotificationListener implements EventListener {
+    + update(eventType: string, file: File): void
+}
+
+class FileLogListener implements EventListener {
+    + update(eventType: string, file: File): void
+}
+
+class EventManager {
+    - listeners: Map<String, List<EventListener>>
+
+    + subscribe(evenType: String, listener: EventListener): void
+    + unsubscribe(evenType: String, listener: EventListener): void
+    + notify(evenType: String, file: File): void
+}
+
+class Editor {
+    - file: File
+    + eventManager: EventManager
+
+    + openFile(filePath: String): void
+    + saveFile(): void
+}
+
+Editor *-- EventManager
+EventManager *-- EventListener
+
+@enduml
